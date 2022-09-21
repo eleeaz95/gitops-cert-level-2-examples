@@ -24,10 +24,12 @@ spec:
    
   ignoreDifferences:
   - group: apps
+    kind: Secret
+    name: example-secret
+    namespace: example02 
+    jsonPointers:
+    - /data/my-password
+  - group: apps
     kind: Deployment
     jsonPointers:
     - /metadata/annotations/creation
-  - group: apps
-    kind: Secret
-    jqPathExpressions:
-    - .data[] | select(.my-password)
